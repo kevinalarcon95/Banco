@@ -16,7 +16,7 @@ class clsAccesoDatos:
     def crearDirectorio(self,rutaAccesoDatos):
         try:
             if not os.path.exists(rutaAccesoDatos):
-                os.mkdir(ruta)
+                os.mkdir(rutaAccesoDatos)
             else:
                 print('Ya existe el directorio!')
 
