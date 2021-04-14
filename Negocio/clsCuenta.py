@@ -1,9 +1,23 @@
 class clsCuenta:
-    def __init__(self,montoInicial, minimoCuenta, porcentajeCuenta, saldoCuenta):
+    def __init__(self,numCuenta, tipoCuenta, montoInicial, minimoCuenta, porcentajeCuenta, saldoCuenta):
+        self.numCuenta = numCuenta
+        self.tipoCuenta = tipoCuenta
         self.montoInicial = montoInicial
         self.minimoCuenta = minimoCuenta
         self.porcentajeCuenta = porcentajeCuenta
         self.saldoCuenta = saldoCuenta
+
+        def get_numCuenta(self):
+            return self.numCuenta
+
+        def set_numCuenta(self, numCuenta):
+            self.numCuenta = numCuenta
+
+        def get_tipoCuenta(self):
+            return self.tipoCuenta
+
+        def set_tipoCuenta(self, tipoCuenta):
+            self.tipoCuenta = tipoCuenta
 
         def get_montoInicial(self):
             return self.montoInicial
