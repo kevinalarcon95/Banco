@@ -11,21 +11,33 @@ Empleados = { 1111: {'nombreEmpleado': 'Sandra Casas', 'idEmpleado': 1061782345,
               }
 
 Clientes = { 25291907: { 'nombreCliente': 'Camilo Diaz', 'usuarioCliente': 'cdiaz',
-                         'Cuentas': {'numCuenta': 12345, 'tipoCuenta': 'ahorro', 'montoInicial': 1000000, 'minimoCuenta': 10000,
-                         'porcentajeCuenta': 10, 'saldoCuenta': 500000}
-                         }
+                         'Cuentas': {
+                                     12345: { 'tipoCuenta': 'ahorro', 'montoInicial': 1000000, 'minimoCuenta': 10000,
+                                            'porcentajeCuenta': 10, 'saldoCuenta': 500000
+                                              },
+                                     99999: { 'tipoCuenta': 'corriente', 'montoInicial': 5000, 'minimoCuenta': 2000,
+                                                        'porcentajeCuenta': 0, 'saldoCuenta': 3000000
+                                              }
+                                    }
+                         },
+            36316678: { 'nombreCliente': 'Sandra Cortes', 'usuarioCliente': 'sacortes',
+                                     'Cuentas': {'numCuenta': 12345, 'tipoCuenta': 'corriente', 'montoInicial': 1000000, 'minimoCuenta': 10000,
+                                     'porcentajeCuenta': 5, 'saldoCuenta': 1200000}
+                                     }
             }
 
 def consignarDinero():
-    idCliente = input('Digite el ID del cliente: ')
-    confirmar = False
-    infoCliente = Clientes.get(idCliente)
+    iDCliente = int(input('Digite el ID del cliente: '))
+    infoCliente = Clientes.get(iDCliente)
     if infoCliente != None:
         print(infoCliente)
-        return infoCliente
+        numCuenta = int(input('Digite el numero de cuenta: '))
+        infoCuenta = infoCliente.get(numCuenta)
+        print(infoCuenta)
     else:
         print('\nATENCIÓN:\n\t¡No existe un cliente con ese ID!\n')
-        print(infoCliente)
+
+
 
 
 def menuPrincipal():
