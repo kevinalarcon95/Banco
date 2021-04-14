@@ -1,6 +1,6 @@
-class clsEmpleado:
+class clsEmpleados:
 
-    def __init__(self, nombreEmpleado, idEmpleado, sueldoEmpleado, añosTrabajados, vacacionees, cargoEmpleado):
+    def __init__(self, nombreEmpleado, idEmpleado, sueldoEmpleado, añosTrabajados, vacaciones, cargoEmpleado):
         self.nombreEmpleado = nombreEmpleado
         self.idEmpleado = idEmpleado
         self.sueldoEmpleado =sueldoEmpleado
@@ -43,3 +43,6 @@ class clsEmpleado:
 
     def set_cargoEmpleado(self, cargoEmpleado):
         self.cargaEmpleado = cargoEmpleado
+
+    def mostrarInformacion(self):
+        print('Nombre: ', self.nombreEmpleado, 'ID: ', self.idEmpleado)

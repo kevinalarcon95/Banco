@@ -1,4 +1,4 @@
-class Clientes:
+class clsClientes:
 
     def __init__(self,nombreCliente, usuarioCliente, idCliente):
         self.nombreCliente = nombreCliente
