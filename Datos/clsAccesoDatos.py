@@ -23,17 +23,16 @@ class clsAccesoDatos:
         self.nombreArchivo = nombreArchivo
 
 
-    def crearDirectorio(self, empleado):
+    def cargarDatos(self):
+       lineas = list()
+       datos = list()
+       archivo = open(self.rutaAccesoDatos+self.nombreArchivo, "r")
+       for linea in archivo:
+        lineas.append(linea.strip('\n'))
 
-        try:
-            if not os.path.exists(self.rutaAccesoDatos):
-                os.mkdir(self.rutaAccesoDatos)
-                archivo = open('self.rutaAccesoDatos + self.nombreArchivo','w')
-                pickle.dump(self.empleado, archivo)
-                archivo.close()
-            else:
-                print('Ya existe el directorio!')
+       archivo.close()
+       return lineas
 
-        except OSError:
-            print('Error el directorio!')
+
+
 

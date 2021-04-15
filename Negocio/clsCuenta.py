@@ -7,38 +7,43 @@ class clsCuenta:
         self.porcentajeCuenta = porcentajeCuenta
         self.saldoCuenta = saldoCuenta
 
-        def get_numCuenta(self):
-            return self.numCuenta
+    def get_numCuenta(self):
+        return self.numCuenta
 
-        def set_numCuenta(self, numCuenta):
-            self.numCuenta = numCuenta
+    def set_numCuenta(self, numCuenta):
+        self.numCuenta = numCuenta
 
-        def get_tipoCuenta(self):
-            return self.tipoCuenta
+    def get_tipoCuenta(self):
+        return self.tipoCuenta
 
-        def set_tipoCuenta(self, tipoCuenta):
-            self.tipoCuenta = tipoCuenta
+    def set_tipoCuenta(self, tipoCuenta):
+        self.tipoCuenta = tipoCuenta
 
-        def get_montoInicial(self):
-            return self.montoInicial
+    def get_montoInicial(self):
+        return self.montoInicial
 
-        def set_montoInicial(self, montoInicial):
-            self.montoInicial = montoInicial
-        
-        def get_minimoCuenta(self):
-            return self.minimoCuenta
-        
-        def set_minimoCuenta(self, minimoCuenta):
-            self.minimoCuenta = minimoCuenta
+    def set_montoInicial(self, montoInicial):
+        self.montoInicial = montoInicial
 
-        def get_porcentajeCuenta(self):
-            return self.porcentajeCuenta
+    def get_minimoCuenta(self):
+        return self.minimoCuenta
 
-        def set_porcentajeCuenta(self, porcentajeCuenta):
-            self.porcentajeCuenta = porcentajeCuenta
-        
-        def get_saldoCuenta(self):
-            return self.saldoCuenta
+    def set_minimoCuenta(self, minimoCuenta):
+        self.minimoCuenta = minimoCuenta
 
-        def set_saldoCuenta(self, saldoCuenta):
-            self.saldoCuenta = saldoCuenta
+    def get_porcentajeCuenta(self):
+        return self.porcentajeCuenta
+
+    def set_porcentajeCuenta(self, porcentajeCuenta):
+        self.porcentajeCuenta = porcentajeCuenta
+
+    def get_saldoCuenta(self):
+        return self.saldoCuenta
+
+    def set_saldoCuenta(self, saldoCuenta):
+        self.saldoCuenta = saldoCuenta
+
+    def mostrarInformacion(self):
+        print('Numero de Cuenta: ', self.numCuenta + '\n', 'Tipo Cuenta: ', self.tipoCuenta + '\n', 'Monto Inicial', self.montoInicial
+              + '\n', 'Minimo Cuenta: ' , self.minimoCuenta + '\n', 'Porcentaje Cuenta: ', self.porcentajeCuenta +'\n', 'Saldo Cuenta:',
+              self.saldoCuenta + '\n')

@@ -2,6 +2,7 @@ import sys
 from Negocio.clsEmpleados import clsEmpleados
 from Negocio.clsClientes import clsClientes
 from Datos.clsAccesoDatos import clsAccesoDatos
+"""
 Empleados = { 1111: {'nombreEmpleado': 'Sandra Casas', 'idEmpleado': 1061782345, 'sueldo': 15000000, 'añosTrabajados': 3,
                     'vacaciones': 2, 'cargoEmpleado': 'asesor'},
               1112: {'nombreEmpleado': 'Cristian Rojas', 'idEmpleado': 1060345677, 'sueldo': 21000000,'añosTrabajados': 6,
@@ -32,8 +33,13 @@ def consignarDinero():
     if infoCliente != None:
         print(infoCliente)
         numCuenta = int(input('Digite el numero de cuenta: '))
-        infoCuenta = infoCliente.get(numCuenta)
-        print(infoCuenta)
+        infoCuenta = infoCliente.get('Cuentas')
+        cuentas = infoCuenta.get(numCuenta)
+        print(cuentas)
+        print('Saldo de la Cuenta: ' ,cuentas['saldoCuenta'])
+        print(Clientes.keys())
+        cliente = clsClientes(infoCliente['nombreCliente'], infoCliente['usuarioCliente'],iDCliente)
+        cliente.
     else:
         print('\nATENCIÓN:\n\t¡No existe un cliente con ese ID!\n')
 
@@ -89,4 +95,24 @@ while opc != 2:
         opc = int(opc)
     except ValueError:
         print('\nATENCIÓN:\n\t¡Debe ingresar solo números enteros!\n')
+
+
+"""
+
+accesoDatos = clsAccesoDatos("C:/sistemaBancario/","empleados.txt")
+#print(accesoDatos.cargarDatos())
+
+def listaEmpleados():
+    listaEmpleados = accesoDatos.cargarDatos()
+    datos = list()
+    for i in listaEmpleados:
+        datos = i.split(',')
+        print(datos)
+
+    for j in datos:
+        print(j)
+
+    empleado = clsEmpleados(j[0],i[1],i)
+
+listaEmpleados()
 
