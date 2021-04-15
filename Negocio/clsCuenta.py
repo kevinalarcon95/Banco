@@ -44,6 +44,5 @@ class clsCuenta:
         self.saldoCuenta = saldoCuenta
 
     def mostrarInformacion(self):
-        print('Numero de Cuenta: ', self.numCuenta + '\n', 'Tipo Cuenta: ', self.tipoCuenta + '\n', 'Monto Inicial', self.montoInicial
-              + '\n', 'Minimo Cuenta: ' , self.minimoCuenta + '\n', 'Porcentaje Cuenta: ', self.porcentajeCuenta +'\n', 'Saldo Cuenta:',
-              self.saldoCuenta + '\n')
+        print('Numero de Cuenta: ', self.numCuenta , 'Tipo Cuenta: ', self.tipoCuenta , 'Monto Inicial', self.montoInicial,
+              'Minimo Cuenta: ' , self.minimoCuenta, 'Porcentaje Cuenta: ', self.porcentajeCuenta , 'Saldo Cuenta:',self.saldoCuenta)

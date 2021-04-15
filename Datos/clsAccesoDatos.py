@@ -33,6 +33,17 @@ class clsAccesoDatos:
        archivo.close()
        return lineas
 
+    def escribirDatos(self, texto):
+        if os.path.isfile(self.rutaAccesoDatos+self.nombreArchivo):
+            print('El archivo ya existe!')
+        else:
+            archivo = open(self.rutaAccesoDatos+self.nombreArchivo, 'a+')
+            archivo.write(texto)
+            archivo.close()
+            print('\nArchivo generado con exito!')
+
+
+
 
 
 
