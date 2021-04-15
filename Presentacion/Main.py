@@ -106,13 +106,11 @@ def listaEmpleados():
     listaEmpleados = accesoDatos.cargarDatos()
     datos = list()
     for i in listaEmpleados:
-        datos = i.split(',')
-        print(datos)
+        datos.append(i.split(','))
 
     for j in datos:
         print(j)
 
-    empleado = clsEmpleados(j[0],i[1],i)
 
 listaEmpleados()
 
