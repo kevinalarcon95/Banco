@@ -1,9 +1,18 @@
+"""
+Taller Final - Sistema de Gestión Bancario
+
+Presentado por:
+    Kevin Fernando Alarcón Camayo  <kfalarcon@unicauca.edu.co>
+    Carlos Enrique Hoyos Joiro     <joiroce@unicauca.edu.co>
+
+"""
 import sys
 from Negocio.clsEmpleados import clsEmpleados
 from Negocio.clsClientes import clsClientes
 from Negocio.clsCuenta import clsCuenta
 from Negocio.clsBanco import clsBanco
 from Datos.clsAccesoDatos import clsAccesoDatos
+from datetime import datetime
 
 
 Clientes = { 25291907: { 'nombreCliente': 'Camilo Diaz', 'usuarioCliente': 'cdiaz',
@@ -17,9 +26,10 @@ Clientes = { 25291907: { 'nombreCliente': 'Camilo Diaz', 'usuarioCliente': 'cdia
                                     }
                          },
             36316678: { 'nombreCliente': 'Sandra Cortes', 'usuarioCliente': 'sacortes',
-                                     'Cuentas': {'numCuenta': 12345, 'tipoCuenta': 'corriente', 'montoInicial': 1000000, 'minimoCuenta': 10000,
+                        'Cuentas': {12345:{ 'tipoCuenta': 'corriente', 'montoInicial': 1000000, 'minimoCuenta': 10000,
                                      'porcentajeCuenta': 5, 'saldoCuenta': 1200000}
                                      }
+                        }
             }
 
 accesoDatos = clsAccesoDatos("C:/sistemaBancario/","empleados.txt")
@@ -68,17 +78,18 @@ def consignarDinero(nombreEmpleado):
             for i in cliente.listaCuentas:
                 saldo = i.get_saldoCuenta()
                 saldo = saldoConsignar+saldo
+                cuentas['saldoCuenta'] = saldo
                 i.set_saldoCuenta(saldo)
                 print('Consignacion exitosa! \n Saldo: ',i.get_saldoCuenta())
-
-            generarRecibo(nombreEmpleado, cliente.nombreCliente,numCuenta,'Consignacion', saldoConsignar)
+                fecha = datetime.now()
+            generarRecibo(fecha,nombreEmpleado, cliente.nombreCliente,numCuenta,'Consignacion', saldoConsignar)
         else:
             print('\nATENCIÓN:\n\t¡No existen registros con ese numero cuenta!\n')
 
     else:
         print('\nATENCIÓN:\n\t¡No existe un cliente con ese ID!\n')
 
-def retirarDinero():
+def retirarDinero(nombreEmpleado):
     iDCliente = int(input('Digite el ID del cliente: '))
     infoCliente = Clientes.get(iDCliente)
     if infoCliente != None:
@@ -99,14 +110,17 @@ def retirarDinero():
             cliente.mostrarInformacion()
 
             saldoRetirar = int(input('Digite la cantidad a retirar: '))
-
-            for i in cliente.listaCuentas:
-                saldo = i.get_saldoCuenta()
-                saldo = saldoRetirar - saldo
-                i.set_saldoCuenta(saldo)
-                print('Consignacion exitosa! \n Saldo: ', i.get_saldoCuenta())
-
-            generarRecibo(nombreEmpleado, cliente.nombreCliente,numCuenta,'Consignacion', saldoConsignar)
+            if saldoRetirar < 0 or saldoRetirar>saldoCuenta:
+                print('Operacion invalida!...No puedes retirar un monto mayor a tu saldo.')
+            else:
+                for i in cliente.listaCuentas:
+                    saldo = i.get_saldoCuenta()
+                    saldo = saldo - saldoRetirar
+                    cuentas['saldoCuenta'] = saldo
+                    i.set_saldoCuenta(saldo)
+                    print('Consignacion exitosa! \n Saldo: ', i.get_saldoCuenta())
+                    fecha = datetime.now()
+                generarRecibo(fecha,nombreEmpleado, cliente.nombreCliente,numCuenta,'Retirar', saldoRetirar)
 
         else:
             print('\nATENCIÓN:\n\t¡No existen registros con ese numero cuenta!\n')
@@ -114,14 +128,24 @@ def retirarDinero():
     else:
         print('\nATENCIÓN:\n\t¡No existe un cliente con ese ID!\n')
 
-def generarRecibo(nombreEmpleado, nombreCliente,numCuenta, transaccion, cantidad):
+def generarRecibo(fecha,nombreEmpleado, nombreCliente,numCuenta, transaccion, cantidad):
     banco = clsBanco('Bancolombia Popayan', 'Carrera 5 #3-23')
     recibo = banco.transaccion(nombreEmpleado,nombreCliente,numCuenta,transaccion,cantidad)
     nombreRecibo = input('Digita el nombre del recibo: ')
     archivo = clsAccesoDatos("C:/sistemaBancario/",nombreRecibo+".txt")
     print(recibo)
     archivo.escribirDatos(recibo)
+    extractoBancario(fecha,recibo,numCuenta)
+    print(recibo)
 
+def extractoBancario(fecha,recibo,numCuenta):
+    archivo = clsAccesoDatos("C:/sistemaBancario/",'extractoBancario_'+ str(numCuenta) +".txt")
+    archivo.escribirDatos('Numero de transaccion: ' + str(fecha) +'\n' + recibo+'\n\n')
+
+def mostrarExtractoBancario():
+    numCuenta = int(input('Digite el numero de cuenta: '))
+    archivo = clsAccesoDatos("C:/sistemaBancario/", 'extractoBancario_' + str(numCuenta) + ".txt")
+    archivo.leerArchivo()
 
 def menuPrincipal():
     print(' -------------------------------------------------------------- \n' +
@@ -138,7 +162,7 @@ def ingresoAlSistema(nombreEmpleado):
         if opc == 2:
             retirarDinero(nombreEmpleado)
         if opc == 3:
-            extractoBancario()
+            mostrarExtractoBancario()
         if opc == 4:
             gestionClientes()
         if opc == 5:
@@ -172,7 +196,7 @@ while opc != 2:
                 empleadoPos = i
 
         if existeEmpleado:
-            ingresoAlSistema(i.get_nombreEmpleado())
+            ingresoAlSistema(empleadoPos.get_nombreEmpleado())
         else:
             print('\nATENCIÓN:\n\t¡No existe un empleado con ese ID!\n')
     if opc == 2:
