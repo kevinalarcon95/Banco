@@ -45,4 +45,5 @@ class clsEmpleados:
         self.cargaEmpleado = cargoEmpleado
 
     def mostrarInformacion(self):
-        print('Nombre: ', self.nombreEmpleado, 'ID: ', self.idEmpleado)
+        print('Nombre: ', self.nombreEmpleado, 'ID: ', self.idEmpleado, 'Sueldo Empleado: ', self.sueldoEmpleado
+              , 'Años Trabajados: ', self.añosTrabajados, 'Vacaciones: ' , self.vacaciones, 'Cargo Empleado: ' , self.cargaEmpleado)
