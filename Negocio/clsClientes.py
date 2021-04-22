@@ -25,8 +25,11 @@ class clsClientes:
     def set_idCliente(self, idCliente):
         self.idCliente = idCliente
 
+    def get_listaCuentas(self):
+        return  self.listaCuentas
+
     def mostrarInformacion(self):
-        print('ID Cliente: ', self.idCliente,'Nombre Cliente: ', self.nombreCliente, 'Usuario: ', self.usuarioCliente)
+        print('ID Cliente: ', self.idCliente,'| Nombre Cliente: ', self.nombreCliente, '|   Usuario: ', self.usuarioCliente)
 
     def add_Cuenta(self, numCuenta, tipoCuenta, montoInicial, minimoCuenta, porcentajeCuenta, saldoCuenta):
         self.listaCuentas.append((clsCuenta(numCuenta, tipoCuenta, montoInicial, minimoCuenta, porcentajeCuenta, saldoCuenta)))

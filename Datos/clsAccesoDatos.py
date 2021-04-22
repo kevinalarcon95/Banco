@@ -37,16 +37,14 @@ class clsAccesoDatos:
         archivo = open(self.rutaAccesoDatos+self.nombreArchivo, 'a+')
         archivo.write(texto)
         archivo.close()
-        print('\nArchivo generado con exito!')
+        #print('\nArchivo generado con exito!')
 
     def leerArchivo(self):
         ruta = self.rutaAccesoDatos+self.nombreArchivo
-        if os.path.isfile(ruta):
-            print('El archivo existe!.');
-        else:
-            archivo = open(self.rutaAccesoDatos+self.nombreArchivo,"r+")
-            print(archivo.read())
-            archivo.close()
+
+        archivo = open(self.rutaAccesoDatos+self.nombreArchivo,"r+")
+        print(archivo.read())
+        archivo.close()
 
 
 

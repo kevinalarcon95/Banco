@@ -16,4 +16,4 @@ class clsBanco:
         self.direccionBanco = direccionBanco
 
     def transaccion(self, nombreEmpleado, nombrecliente, numCuenta, transaccion, cantidadTransaccion):
-        return "Banco: "+ self.sucursalBanco + "\tDireccion: "+ self.direccionBanco + "\nEmpleado: " + nombrecliente + "\tCliente: " + nombrecliente + "\nNumero de Cuenta: " + str(numCuenta) + "\tTransaccion: " + transaccion + "\nCantidad: " + str(cantidadTransaccion)
+        return "Banco: "+ self.sucursalBanco + "\tDireccion: "+ self.direccionBanco + "\nAtendido por: " + nombreEmpleado + "\tCliente: " + nombrecliente + "\nNumero de Cuenta: " + str(numCuenta) + "\tTransaccion: " + transaccion + "\nCantidad: " + str(cantidadTransaccion)

@@ -7,6 +7,7 @@ class clsEmpleados:
         self.añosTrabajados = añosTrabajados
         self.vacaciones = vacaciones
         self.cargaEmpleado = cargoEmpleado
+        self.listaClientes = list()
 
     def get_nombreEmpleado(self):
         return self.nombreEmpleado
@@ -44,6 +45,9 @@ class clsEmpleados:
     def set_cargoEmpleado(self, cargoEmpleado):
         self.cargaEmpleado = cargoEmpleado
 
+    def get_listaClientes(self):
+        return  self.listaClientes
+
     def mostrarInformacion(self):
-        print('Nombre: ', self.nombreEmpleado, 'ID: ', self.idEmpleado, 'Sueldo Empleado: ', self.sueldoEmpleado
-              , 'Años Trabajados: ', self.añosTrabajados, 'Vacaciones: ' , self.vacaciones, 'Cargo Empleado: ' , self.cargaEmpleado)
+        print('Nombre: ', self.nombreEmpleado, '| ID: ', self.idEmpleado, '\n| Sueldo Empleado: ', self.sueldoEmpleado
+              , '|\n\t Años Trabajados: ', self.añosTrabajados, '\n| Vacaciones: ' , self.vacaciones, '\n\t| Cargo Empleado: ' , self.cargaEmpleado)
