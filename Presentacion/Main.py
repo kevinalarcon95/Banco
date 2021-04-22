@@ -139,7 +139,7 @@ def retirarDinero(nombreEmpleado, idEmpleado):
         else:
             print('\nATENCIÓN:\n\t¡No existen registros con ese numero cuenta!\n')
 
-    else:+
+    else:
         print('\nATENCIÓN:\n\t¡No existe un cliente con ese ID!\n')
 
 def generarRecibo(fecha,nombreEmpleado, nombreCliente,numCuenta, transaccion, cantidad):
